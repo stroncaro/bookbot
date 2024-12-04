@@ -17,14 +17,30 @@ def print_footer():
 
 
 def print_book_stats(path, word_count, char_list):
+    column_quantity = 3
+    char_chunks = chunk_list(char_list, column_quantity)
+
     print(f"*** Report of {path} ***")
     print()
     print(f"The book has {word_count} words.")
     print()
     print(f"Character usage data:")
-    for char_data in char_list:
-        print(f"  {char_data["char"]}: {char_data["count"]}")
+
+    col_padding = " " * 5
+    col_size = len(str(char_chunks[0][0]["count"]))
+    for chunk in char_chunks:
+        print("  ", end="")
+        for char_data in chunk:
+            print(
+                f"{char_data["char"]}: {char_data["count"]:>{col_size}}{col_padding}",
+                end="",
+            )
+        print()
     print("*** End of report ***")
+
+
+def chunk_list(lst, chunk_num):
+    return [lst[i : i + chunk_num] for i in range(0, len(lst), chunk_num)]
 
 
 def get_char_list(char_dict):
