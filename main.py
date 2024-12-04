@@ -6,7 +6,18 @@ def main():
     char_list = get_char_list(char_dict)
     char_list.sort(reverse=True, key=lambda char: char["count"])
 
-    print(f"*** Report of {book_path} ***")
+    print_book_stats(book_path, word_count, char_list)
+    print_footer()
+
+
+def print_footer():
+    print()
+    print("Thank you for using BookBot.")
+    print("Beep Bop!")
+
+
+def print_book_stats(path, word_count, char_list):
+    print(f"*** Report of {path} ***")
     print()
     print(f"The book has {word_count} words.")
     print()
@@ -14,9 +25,6 @@ def main():
     for char_data in char_list:
         print(f"  {char_data["char"]}: {char_data["count"]}")
     print("*** End of report ***")
-    print()
-    print("Thank you for using BookBot.")
-    print("Beep Bop!")
 
 
 def get_char_list(char_dict):
