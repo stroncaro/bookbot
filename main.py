@@ -2,10 +2,19 @@ def main():
     book_path = "books/frankenstein.txt"
     book_contents = get_book_contents(book_path)
     book_word_count = get_word_count(book_contents)
-    print(book_word_count)
-
     book_char_count = get_char_count(book_contents)
-    print(book_char_count)
+
+    print(f"*** Report of {book_path} ***")
+    print()
+    print(f"The book has {book_word_count} words.")
+    print()
+    print(f"Character usage data:")
+    for char, count in book_char_count.items():
+        print(f"  {char}: {count}")
+    print("*** End of report ***")
+    print()
+    print("Thank you for using BookBot.")
+    print("Beep Bop!")
 
 
 def get_book_contents(path):
