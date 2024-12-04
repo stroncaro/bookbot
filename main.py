@@ -4,6 +4,9 @@ def main():
     book_word_count = get_word_count(book_contents)
     print(book_word_count)
 
+    book_char_count = get_char_count(book_contents)
+    print(book_char_count)
+
 
 def get_book_contents(path):
     with open(path) as f:
@@ -12,6 +15,14 @@ def get_book_contents(path):
 
 def get_word_count(text):
     return len(text.split())
+
+
+def get_char_count(text):
+    text = text.lower()
+    chars = {}
+    for char in text:
+        chars[char] = chars.get(char, 0) + 1
+    return chars
 
 
 main()
